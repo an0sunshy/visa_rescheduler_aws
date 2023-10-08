@@ -10,6 +10,7 @@ import time as tm
 from datetime import datetime
 from enum import Enum
 from tempfile import mkdtemp
+import asyncio
 
 import requests
 from selenium import webdriver
@@ -20,6 +21,7 @@ from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.common.exceptions import NoSuchElementException
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
+from telegram import Bot
 from webdriver_manager.chrome import ChromeDriverManager
 
 from utils import Result
@@ -49,6 +51,9 @@ PUSH_USER = config['PUSHOVER']['PUSH_USER']
 USE = config['CHROMEDRIVER']['USE']
 HUB_ADDRESS = config['CHROMEDRIVER']['HUB_ADDRESS']
 
+TELEGRAM_BOT_TOKEN = config['TELEGRAM']['BOT_TOKEN']
+TELEGRAM_CHAT_ID = config['TELEGRAM']['CHAT_ID']
+
 REGEX_CONTINUE = '//*[@id="main"]/div[2]/div[2]/div[1]/div/div/div[1]/div[2]/ul/li/a'
 
 STEP_TIME = 0.5  # time between steps (interactions with forms): 0.5 seconds
@@ -64,6 +69,9 @@ code[1] = code[1].upper()
 code = str.join("_", code)
 locale.setlocale(locale.LC_ALL, f'{code}.UTF-8')
 
+async def send_telegram_message(msg):
+    async with Bot(TELEGRAM_BOT_TOKEN) as bot:
+        await bot.send_message(TELEGRAM_CHAT_ID, text=msg)
 
 class Use(Enum):
     AWS = "AWS"
@@ -338,6 +346,10 @@ class VisaScheduler:
                 "message": msg
             }
             requests.post(url, data)
+
+        if TELEGRAM_BOT_TOKEN:
+            asyncio.run(send_telegram_message(msg))
+
 
     @staticmethod
     def print_dates(dates):

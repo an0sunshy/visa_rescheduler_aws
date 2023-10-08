@@ -28,3 +28,8 @@ PUSH_USER = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 [SENDGRID]
 ; Get email notifications via https://sendgrid.com/ (optional)
 SENDGRID_API_KEY = 
+
+[TELEGRAM]
+; Send notification through telegram bot https://telegram.org
+BOT_TOKEN = 
+CHAT_ID = 
