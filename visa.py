@@ -49,7 +49,7 @@ PUSH_USER = config['PUSHOVER']['PUSH_USER']
 USE = config['CHROMEDRIVER']['USE']
 HUB_ADDRESS = config['CHROMEDRIVER']['HUB_ADDRESS']
 
-REGEX_CONTINUE = "//a[contains(text(),'Continuar')]"
+REGEX_CONTINUE = '//*[@id="main"]/div[2]/div[2]/div[1]/div/div/div[1]/div[2]/ul/li/a'
 
 STEP_TIME = 0.5  # time between steps (interactions with forms): 0.5 seconds
 
