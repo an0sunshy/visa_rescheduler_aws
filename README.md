@@ -1,6 +1,6 @@
 # visa_rescheduler - AWS
 
-US VISA (ais.usvisa-info.com) appointment re-scheduler - Colombian adaptation
+US VISA (ais.usvisa-info.com) appointment re-scheduler - Canada adaptation
 
 With the extension to be deployed in AWS as a Lambda function
 
