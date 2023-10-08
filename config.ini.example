@@ -6,13 +6,13 @@ PASSWORD = xxxxxxxxxx
 ; SCHEDULE_ID is not IVR Account Number
 SCHEDULE_ID = 99999999
 ; In case you required an appointment on ASC
-NEED_ASC = True
-; Spanish - Colombia
-COUNTRY_CODE = es-co
-; Bogotá
-FACILITY_ID = 25
-; Bogotá
-ASC_ID = 26
+NEED_ASC = False
+; English - Canada
+COUNTRY_CODE = en-ca
+; Vancouver
+FACILITY_ID = 95
+; NOT BEING USED - Vancouver
+ASC_ID = 95
 
 [CHROMEDRIVER]
 ; Way to use selenium LOCAL, AWS or REMOTE
